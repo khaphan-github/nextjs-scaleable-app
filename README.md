@@ -14,6 +14,8 @@
   + Add layout for specific feature. (checkout layout seperate with admin layout)
 - Privdate folder: `_folder-name` declare folder name with _ first to make this folder is private.
 - Use `[slug-or-some-other-key]` to use request param. `post/[glug]/page.tsx`
+- Parallel routes: Redner comopnent by simultaneously or conditionally using '@route-name'
+- Intercepting routes: Display content as a modal. syntax (...) [TODO DEMO]
 
 3. Colocation
 - A routes is not publicly accessible untils a page.js or routes.js is addes to.
@@ -26,12 +28,46 @@
 
 5. Component hierarchy (Phan cap):
 - Layout > Template > Error > Loading > Page (I can contain child is a group of layout template ,...)
+
+6. Linking and navigations:
+App router uses a hyprid approach for routing and navigations. 
++ Server will Splitting code to smaller bundles to download as execute at brower.
++ Prefetching (Only in production) is a way to preload a route in the background before the user visit (using Link or router,.prefetch).
++ Caching nextjs has a inmemory client side cache called Routercache, 
++ Partial Rendering: Load only component at specific route no tload full
++ Soft navigation: 
++ Back and forward Navigation_
++ Routing between pages and apps: Need config
+Type:
+- Use `Link` component
+- Use `useRouter()` hook
+- Use `redirect`
+- Use `window.history,`
+[TODO: DEMO HANDLE NAVIGATION]
+
+7. Error handling
+- Expected erro need use useActionState instead try catch
+- Unexpected error using error.tsx or global-error.tsx
+[TODO: DEMO HANDLE ERROR]
+
+8. Middleware:
+Middleware allows you to run code before a request is completed.
+syntax: middleware.ts file.
+
+9. Internationalization:
+
+
 ### Style/Component/Layout
 - Interacted with tailwindcss
 ### Fetchign data:
 - Fetching data from database and from other api.
 - By default all components created is server component, if want use reacthook, need to use "use client" directive
-- Lazyload component:
+- Lazyload component: 
+```javascript
+const HeavyComponent = dynamic(() => import('../components/HeavyComponent'), {
+  ssr: false, // Disable SSR if the component relies on client-side only features
+});
+```
 NOte: 
 - Nextjs not allow import server component to client components butt you can use childrent instead
 
@@ -39,5 +75,7 @@ NOte:
 - Server component: 
   + Render html at serve then return html to client, get data blabla
   + Rendering strategy: Static, Dynamic, Streaming (use Suspense): Next.js will automatically choose the best rendering strategy for each route based on the features and APIs used
-- Client component: That file can handle react lifecircle hook, events, call api... vd: button, comonent handle user events. 
+- Client component: 
+  + That file can handle react lifecircle hook, events, call api... vd: button, comonent handle user events. 
+  + SWR is highly recommended if you are fetching data on the client-side. It handles caching, revalidation, focus tracking, refetching on intervals, and more.
 - https://nextjs.org/docs/app/building-your-application/rendering/composition-patterns#when-to-use-server-and-client-components# nextjs-scaleable-app
