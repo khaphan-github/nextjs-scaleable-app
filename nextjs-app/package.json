@@ -10,6 +10,7 @@
     "start:prod": "next build && cp -r public .next/standalone/ && cp -r .next/static .next/standalone/.next/ && HOSTNAME=127.0.0.1 POR=3000  node .next/standalone/server.js"
   },
   "dependencies": {
+    "axios": "^1.7.9",
     "next": "15.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

@@ -81,6 +81,8 @@ syntax: middleware.ts file only one file.
     + 
 9. Internationalization:
 
+10. Handle redirecting login by token:
+Use server size logi to hall api login 3th.
 
 ### Style/Component/Layout
 - Interacted with tailwindcss
@@ -117,6 +119,7 @@ NOte:
 ### Call api:
 swr.
 https://swr.vercel.app/docs/getting-started
+Need cofirm to use lib client
 
 
 ### Installed package:
