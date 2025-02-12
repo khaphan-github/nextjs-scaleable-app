@@ -14,7 +14,24 @@
   + Add layout for specific feature. (checkout layout seperate with admin layout)
 - Privdate folder: `_folder-name` declare folder name with _ first to make this folder is private.
 - Use `[slug-or-some-other-key]` to use request param. `post/[glug]/page.tsx`
-- Parallel routes: Redner comopnent by simultaneously or conditionally using '@route-name'
+- Parallel routes: Redner comopnent by simultaneously or conditionally using '@route-name'.
+  ```tsx
+  // folder
+  @modal
+    page.tsx
+  // layout
+  export default function RootLayout(props: {
+  children: React.ReactNode;
+  modal: React.ReactNode;
+  }) {
+    return (
+      <>
+        {props.children}
+        {props.modal}
+      </>
+    );
+  }
+  ```
 - Intercepting routes: Display content as a modal. syntax (...): use case when want display other route to modal dont reload current route.
 
 3. Colocation
