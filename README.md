@@ -33,6 +33,7 @@
   }
   ```
 - Intercepting routes: Display content as a modal. syntax (...): use case when want display other route to modal dont reload current route.
+- 
 
 3. Colocation
 - A routes is not publicly accessible untils a page.js or routes.js is addes to.
@@ -56,10 +57,10 @@ App router uses a hyprid approach for routing and navigations.
 + Back and forward Navigation_
 + Routing between pages and apps: Need config
 Type:
-- Use `Link` component
-- Use `useRouter()` hook
+- Use `Link` component (Same)
+- Use `useRouter()` hook (Same)
 - Use `redirect`
-- Use `window.history,`
+- Use `window.history,` 
 [TODO: DEMO HANDLE NAVIGATION]
 
 7. Error handling
@@ -69,21 +70,33 @@ Type:
 
 8. Middleware:
 Middleware allows you to run code before a request is completed.
-syntax: middleware.ts file.
-
+syntax: middleware.ts file only one file.
+- Usecase:
+    + Authenticaton check session or cookie
+    + Serverside redirect
+    + Path rewriting
+    + Loging and Analytics
+    + Feature flagging.
+- Best practice:
+    + 
 9. Internationalization:
 
 
 ### Style/Component/Layout
 - Interacted with tailwindcss
+
 ### Fetchign data:
 - Fetching data from database and from other api.
 - By default all components created is server component, if want use reacthook, need to use "use client" directive
 - Lazyload component: 
 ```javascript
+///
+"use client"
+
 const HeavyComponent = dynamic(() => import('../components/HeavyComponent'), {
   ssr: false, // Disable SSR if the component relies on client-side only features
 });
+
 ```
 NOte: 
 - Nextjs not allow import server component to client components butt you can use childrent instead
