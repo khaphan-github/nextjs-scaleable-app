@@ -2,9 +2,14 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { CookieConfig } from "./config/keys/cookies";
 
+/**
+ * Request len khogn co cookie thi redirect ve /auth
+ * @param req 
+ * @returns 
+ */
 export function middleware(req: NextRequest) {
   const token = req.cookies.get(CookieConfig.accessToken)?.value;
-
+  // White list
   // If user is not logged in and tries to access protected routes, redirect to /auth
   if (!token && req.nextUrl.pathname !== "/auth") {
     return NextResponse.redirect(new URL("/auth/login", req.url));
