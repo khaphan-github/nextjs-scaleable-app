@@ -1,7 +1,7 @@
 /**
  * Output of the data hook
  */
-export interface IDataHookOutput<T> {
+export interface IAPIFetchingHook<T> {
   data: T;
   error: unknown,
   isLoading: boolean;

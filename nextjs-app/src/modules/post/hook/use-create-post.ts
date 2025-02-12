@@ -1,21 +1,28 @@
-import { mutate } from "swr";
 import { PostModel } from "../models/post";
 import { APIs } from "../config";
-import { useState } from "react";
 import { POSTFetcher } from "@/lib/client/default-http-client";
+import useApiState from "@/lib/hooks/use-api-state";
+import { ApiUpsertHook } from "@/lib/hooks/interfaces/api-upsert-hook";
 /**
  * Call api to create post
  * Return result
  * @param post 
  * @returns 
  */
-export function useCreatePost(post: PostModel) {
-  const [data, setData] = useState(null);
-  const [error, setError] = useState<string | null>(null);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [isLoading, setIsLoading] = useState(false)
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function useCreatePost(post: PostModel): ApiUpsertHook<any> {
+  const {
+    data,
+    error,
+    isLoading,
+    isSuccess,
+    setData,
+    setError,
+    setIsSuccess,
+    setIsLoading,
+  } = useApiState();
 
-  const createPost = async () => {
+  const summit = async () => {
     setIsLoading(true);
 
     const requestBody = {
@@ -34,7 +41,6 @@ export function useCreatePost(post: PostModel) {
       }
 
       setData(response);
-      mutate(APIs.CREATE_POST);
       setIsSuccess(true);
 
     } catch (err) {
@@ -50,6 +56,6 @@ export function useCreatePost(post: PostModel) {
     error,
     isLoading,
     isSuccess,
-    createPost
+    summit
   };
 }

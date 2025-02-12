@@ -15,14 +15,14 @@ const CreatePost = ({ redirect }: { redirect: string }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
-  const { error, isLoading, createPost, isSuccess } = useCreatePost({
+  const { error, isLoading, summit, isSuccess } = useCreatePost({
     title,
     content,
   } as PostModel);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await createPost();
+    await summit();
     setTitle('');
     setContent('');
   };

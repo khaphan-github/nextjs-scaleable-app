@@ -1,8 +1,8 @@
 import { APIs } from "../config";
 import useSWR from "swr";
 import { PostModel } from "../models/post";
-import { IDataHookOutput } from "@/lib/interfaces/data-hook-output";
 import { GETFetcher } from "@/lib/client/default-http-client";
+import { IAPIFetchingHook } from "@/lib/hooks/interfaces/api-fetching-hook";
 
 /**
  * Declare respone from api
@@ -20,7 +20,7 @@ export interface IPostResponse {
  * Return data, error, isLoading
  * @returns 
  */
-export default function useGetListPost(): IDataHookOutput<Array<PostModel>> {
+export default function useGetListPost(): IAPIFetchingHook<Array<PostModel>> {
   const { data, error, isLoading } = useSWR(APIs.GET_LIST_POST, GETFetcher);
 
   let mappedData = [];
