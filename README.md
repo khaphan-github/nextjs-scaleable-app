@@ -15,7 +15,7 @@
 - Privdate folder: `_folder-name` declare folder name with _ first to make this folder is private.
 - Use `[slug-or-some-other-key]` to use request param. `post/[glug]/page.tsx`
 - Parallel routes: Redner comopnent by simultaneously or conditionally using '@route-name'
-- Intercepting routes: Display content as a modal. syntax (...) [TODO DEMO]
+- Intercepting routes: Display content as a modal. syntax (...): use case when want display other route to modal dont reload current route.
 
 3. Colocation
 - A routes is not publicly accessible untils a page.js or routes.js is addes to.
@@ -79,3 +79,18 @@ NOte:
   + That file can handle react lifecircle hook, events, call api... vd: button, comonent handle user events. 
   + SWR is highly recommended if you are fetching data on the client-side. It handles caching, revalidation, focus tracking, refetching on intervals, and more.
 - https://nextjs.org/docs/app/building-your-application/rendering/composition-patterns#when-to-use-server-and-client-components# nextjs-scaleable-app
+
+### Hook: https://react.dev/reference/react/hooks
+- It is a function iteract with react lifecicle and state.
+- Use state, Reuse logic, advoid complex class component,...
+
+### Call api:
+swr.
+https://swr.vercel.app/docs/getting-started
+
+
+### Installed package:
+- Modal: https://www.npmjs.com/package/react-modal#demos
+- UIlib:
+  - ant: https://ui.shadcn.com/docs/components/date-picker
+  - shadcn: - https://ui.shadcn.com/docs/components/date-picker

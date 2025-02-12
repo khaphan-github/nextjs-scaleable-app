@@ -6,11 +6,12 @@ import Category from "../model/category"
 export default function CategoryDisplayList() {
   const [categories, setCategories] = useState<Category[]>([])
 
+  async function get() {
+    const res = await FindAllCategory();
+    setCategories(res);
+  }
+
   useEffect(() => {
-    async function get() {
-      const res = await FindAllCategory();
-      setCategories(res);
-    }
     get();
   }, [])
 
