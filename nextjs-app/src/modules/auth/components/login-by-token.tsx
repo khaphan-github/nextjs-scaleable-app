@@ -2,8 +2,13 @@
 "use client"
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import useLoginByTokenHutech from "../hooks/login-by-token-hook";
-
+import useLoginByTokenHutech from "../hooks/use-login-by-token";
+import DefaultUILoadingHandler from "@/lib/helpers/default-ui-handler";
+/**
+ * Hanlde login by token then redirect to redirect routes.
+ * @param param0 
+ * @returns 
+ */
 export default function LoginToken({ token, redirect }: { token: string, redirect: string }) {
   const router = useRouter();
   const {
@@ -23,13 +28,6 @@ export default function LoginToken({ token, redirect }: { token: string, redirec
     }
   }, [isSuccess, router, redirect]);
 
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
-
-  if (error) {
-    return <p>Error: {JSON.stringify(error)}</p>;
-  }
-
-  return <p>Login successful. Redirecting...</p>;
+  const loading = DefaultUILoadingHandler(isLoading, false, error);
+  return loading;
 }
