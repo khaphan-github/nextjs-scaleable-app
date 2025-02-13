@@ -1,12 +1,22 @@
+"use client"
 import Link from "next/link";
+import { useCustomTheme } from "@/context/theme.context";
 
 export default function Home() {
+  const { theme, toggleTheme } = useCustomTheme();
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <Link href="/category">Go to category</Link>
-      <Link href="/blog">Go to blog</Link>
-      <Link href="/feed">Go to demo intercepting routes</Link>
-      <Link href="/landingpage">Go to lading page</Link>
+    <div className="p-4 text-center" style={{ background: theme === "light" ? "#fff" : "#333", color: theme === "light" ? "#000" : "#fff" }}>
+      <nav>
+        <Link href="/">Go Home</Link>
+        <Link href="/category">Go to category</Link>
+        <Link href="/blog">Go to blog</Link>
+        <Link href="/feed">Go to demo intercepting routes</Link>
+        <Link href="/landingpage">Go to landing page</Link>
+      </nav>
+      <div>
+        <p>Current Theme: {theme}</p>
+        <button onClick={toggleTheme}>Toggle Theme</button>
+      </div>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
+import { CustomThemeProvider } from "@/context/theme.context";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,11 +23,11 @@ export default function RootLayout(props: {
 }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Link href={'/'}>GoHome</Link>
-        {props.children}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <CustomThemeProvider>
+          {props.children}
+        </CustomThemeProvider>
       </body>
-    </html>
+    </html >
   );
 }
