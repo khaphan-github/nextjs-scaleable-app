@@ -142,6 +142,7 @@ Need cofirm to use lib client
 4. useCallback: Cached functions
 
 # Handle form validations:
+- Use lib react-hook-form to handle validator.
 # Middleware to protect routes:
 # Component to show and hide elements.
 
