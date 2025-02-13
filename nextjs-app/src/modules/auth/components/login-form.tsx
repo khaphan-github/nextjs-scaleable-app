@@ -46,7 +46,7 @@ export default function LoginForm({ redirect }: { redirect: string }) {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
-        <label htmlFor="username">Username:</label>
+        <label htmlFor="username" className='bg-color-gray'>Username:</label>
         <input
           type="text"
           id="username"

@@ -100,22 +100,23 @@ Use server size logi to hall api login 3th.
 ```javascript
 ///
 "use client"
-
 const HeavyComponent = dynamic(() => import('../components/HeavyComponent'), {
   ssr: false, // Disable SSR if the component relies on client-side only features
 });
-
 ```
 NOte: 
 - Nextjs not allow import server component to client components butt you can use childrent instead
 
 ### Rendering:
 - Server component: 
-  + Render html at serve then return html to client, get data blabla
+  + Render html at serve then return html to client, get data blabla:
   + Rendering strategy: Static, Dynamic, Streaming (use Suspense): Next.js will automatically choose the best rendering strategy for each route based on the features and APIs used
+
 - Client component: 
   + That file can handle react lifecircle hook, events, call api... vd: button, comonent handle user events. 
+
   + SWR is highly recommended if you are fetching data on the client-side. It handles caching, revalidation, focus tracking, refetching on intervals, and more.
+
 - https://nextjs.org/docs/app/building-your-application/rendering/composition-patterns#when-to-use-server-and-client-components# nextjs-scaleable-app
 
 ### Hook: https://react.dev/reference/react/hooks
@@ -145,6 +146,7 @@ Need cofirm to use lib client
 - Use lib react-hook-form to handle validator.
 # Middleware to protect routes:
 # Component to show and hide elements.
+# Lanugages:
 
 # Example flow:
 
@@ -154,4 +156,3 @@ Need cofirm to use lib client
   + client: NOnsecue api, best for perfomance, Brower compute
 
 2. How handle error best practice:
-  + 
