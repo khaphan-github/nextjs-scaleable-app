@@ -5,3 +5,7 @@ export const APIs = {
   LOGIN_BY_TOKEN_HUTECH: DOMAIN + '/api/auth/login-token-hutech',
   LOGIN_BY_USERNAME_PASSWORD: DOMAIN + '/api/auth/login-user-pass',
 }
+
+export const AuthConfig = {
+  loginDomain: 'auth/login'
+}
