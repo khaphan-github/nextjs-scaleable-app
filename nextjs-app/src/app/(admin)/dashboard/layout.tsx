@@ -9,7 +9,6 @@ export default function AdminLayout({
 }>) {
   return (
     <section>
-      This is admin layout
       {children}
       {analytic}
       {revernue}
