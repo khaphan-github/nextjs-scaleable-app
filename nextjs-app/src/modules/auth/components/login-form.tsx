@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from 'react';
+import Form from 'next/form'
 import { loginByUserNamePasswordAction } from '../actions/login-by-username-password.action';
 /**
  * Handle login  by username and password
@@ -11,22 +12,14 @@ export default function LoginForm({ redirect }: { redirect: string }) {
   const [username, setUsername] = useState('NNV0050588');
   const [password, setPassword] = useState('123qwe@..');
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    // Call pai ezula..
-    // Optons all api from client
-    // Optons call api from server.
-
-    await loginByUserNamePasswordAction(username, password, redirect);
-  }
-
   return (
-    <form onSubmit={handleSubmit}>
+    <Form action={(e) => loginByUserNamePasswordAction(e, redirect)}>
       <div>
         <label htmlFor="username">Username:</label>
         <input
           type="text"
           id="username"
+          name='username'
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
@@ -37,12 +30,13 @@ export default function LoginForm({ redirect }: { redirect: string }) {
         <input
           type="password"
           id="password"
+          name='password'
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
       </div>
       <button type="submit">Login</button>
-    </form>
+    </Form>
   );
 };

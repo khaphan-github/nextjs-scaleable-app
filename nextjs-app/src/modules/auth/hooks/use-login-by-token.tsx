@@ -1,7 +1,6 @@
 import defaultAxios from "@/lib/client/axios-default";
 import { APIs } from "../config";
 import useApiState from "@/lib/hooks/use-api-state";
-import { useCallback } from "react";
 import { LoginByTokenModel } from "../models/login-by-token.model";
 
 /**
@@ -20,7 +19,7 @@ export default function useLoginByTokenHutech(token: string) {
     setIsLoading,
   } = useApiState();
 
-  const submit = useCallback(async () => {
+  const submit = async () => {
     try {
       setIsLoading(true);
       const result = await defaultAxios.post(APIs.LOGIN_BY_TOKEN_HUTECH, {
@@ -36,7 +35,7 @@ export default function useLoginByTokenHutech(token: string) {
     } finally {
       setIsLoading(false);
     }
-  }, [setData, setError, setIsLoading, setIsSuccess, token])
+  };
 
   return {
     data,

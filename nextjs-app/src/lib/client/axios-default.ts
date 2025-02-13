@@ -13,11 +13,9 @@ const defaultAxios = axios.create({
 // Add a request interceptor to append the token
 defaultAxios.interceptors.request.use(
   async (config) => {
-    if (typeof window !== "undefined") {
-      const token = getAccessToken();
-      if (token) {
-        config.headers.Authorization = `JWT ${token}`;
-      }
+    const token = getAccessToken();
+    if (token) {
+      config.headers.Authorization = `JWT ${token}`;
     }
     return config;
   },
@@ -33,8 +31,7 @@ defaultAxios.interceptors.response.use(
   },
   (error) => {
     // Handle errors globally
-    defaultResponseInterceptor(error);
-    return Promise.reject(error);
+    return defaultResponseInterceptor(error);
   }
 );
 

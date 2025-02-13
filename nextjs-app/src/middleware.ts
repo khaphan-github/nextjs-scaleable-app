@@ -8,10 +8,9 @@ import { CookieConfig } from "./config/keys/cookies";
  * @returns 
  */
 export function middleware(req: NextRequest) {
-  const isProtectedRoute = true;
   const token = req.cookies.get(CookieConfig.accessToken)?.value;
 
-  if (isProtectedRoute && !token && req.nextUrl.pathname !== "/auth/login") {
+  if (!token && req.nextUrl.pathname !== "/auth/login") {
     return NextResponse.redirect(new URL("/auth/login", req.url));
   }
 
