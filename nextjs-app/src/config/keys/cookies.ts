@@ -1,3 +1,4 @@
 export const CookieConfig = {
-  accessToken: 'auth.accessToken'
+  accessToken: 'auth.accessToken',
+  userInfo: 'auth.userInfo',
 }

@@ -1,3 +1,5 @@
+import LoginForm from "@/modules/auth/components/login-form";
+
 export default function Page() {
-  return (<>Loign page</>)
+  return <LoginForm redirect="/dashboard"></LoginForm>
 }

@@ -84,7 +84,10 @@ syntax: middleware.ts file only one file.
 10. Handle redirecting login by token:
 Use server size logi to hall api login 3th.
 
-11. Hanlde guard in nextjs
+11. Hanlde guard in nextjs:
+- Use middleware to redirect request when token not found
+- Use interceptor
+
 
 
 ### Style/Component/Layout
@@ -130,3 +133,17 @@ Need cofirm to use lib client
 - UIlib:
   - ant: https://ui.shadcn.com/docs/components/date-picker
   - shadcn: - https://ui.shadcn.com/docs/components/date-picker
+
+# React concept:
+## Hook:
+1. reducer: Takes the current state and an action as input, Returns a new state based on the action type.
+2. useContext: access global state without prop drilling.
+3. useMemo: Cached caludated value
+4. useCallback: Cached functions
+
+# Handle form validations:
+# Middleware to protect routes:
+# Component to show and hide elements.
+
+# Example flow:
+- 

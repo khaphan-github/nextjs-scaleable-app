@@ -1,7 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import defaultAxios from "@/lib/client/axios-default";
 import { APIs } from "../config";
 import useApiState from "@/lib/hooks/use-api-state";
+import { useCallback } from "react";
+import { LoginByTokenModel } from "../models/login-by-token.model";
 
 /**
  * Handle login by token hutech at serverside
@@ -19,26 +20,23 @@ export default function useLoginByTokenHutech(token: string) {
     setIsLoading,
   } = useApiState();
 
-  const submit = async () => {
+  const submit = useCallback(async () => {
     try {
       setIsLoading(true);
       const result = await defaultAxios.post(APIs.LOGIN_BY_TOKEN_HUTECH, {
         token_hutech: token,
       });
 
-      if (result.status === 200) {
-        setData(result.data);
-        setIsSuccess(true);
-        console.log(result.data);
-        // TODO: IMPLEMENT SET COOKIE
-      }
+      setData(new LoginByTokenModel().fromJSON(result.data));
+      setIsSuccess(true);
+
     } catch (err) {
-      setError(err as any);
+      setError(err as string);
       setIsSuccess(false);
     } finally {
       setIsLoading(false);
     }
-  }
+  }, [setData, setError, setIsLoading, setIsSuccess, token])
 
   return {
     data,
