@@ -86,8 +86,8 @@ Use server size logi to hall api login 3th.
 
 11. Hanlde guard in nextjs:
 - Use middleware to redirect request when token not found
-- Use interceptor
-
+- Use interceptor to handle error from server. [toDO: demo]
+- 
 
 
 ### Style/Component/Layout
@@ -146,4 +146,11 @@ Need cofirm to use lib client
 # Component to show and hide elements.
 
 # Example flow:
-- 
+
+# Best Practice:
+1. Where get data from server or from browser (Dung o dau goi de get data):
+  + server: Secure api, Best for SEO, Server compute 
+  + client: NOnsecue api, best for perfomance, Brower compute
+
+2. How handle error best practice:
+  + 

@@ -15,6 +15,5 @@ export async function loginByUserNamePasswordService(username: string, password:
     password: password,
     app_key: environments.NEXT_PUBLIC_APP_KEY,
   });
-  console.log(result);
   return new LoginByTokenModel().fromJSON(result.data)
 }

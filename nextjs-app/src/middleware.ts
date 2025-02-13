@@ -8,21 +8,17 @@ import { CookieConfig } from "./config/keys/cookies";
  * @returns 
  */
 export function middleware(req: NextRequest) {
+  const isProtectedRoute = true;
   const token = req.cookies.get(CookieConfig.accessToken)?.value;
-  // White list
-  // If user is not logged in and tries to access protected routes, redirect to /auth
-  if (!token && req.nextUrl.pathname !== "/auth") {
-    return NextResponse.redirect(new URL("/auth/login", req.url));
-  }
 
-  // If user is logged in and tries to access /auth, redirect to home
-  if (token && req.nextUrl.pathname === "/auth") {
-    return NextResponse.redirect(new URL("/", req.url));
+  if (isProtectedRoute && !token && req.nextUrl.pathname !== "/auth/login") {
+    return NextResponse.redirect(new URL("/auth/login", req.url));
   }
 
   return NextResponse.next(); // Allow navigation
 }
 
+// Routes Middleware should not run on
 export const config = {
-  matcher: ["/", "/dashboard/:path*", "/auth"], // Protect these routes
+  matcher: ['/((?!api|_next/static|_next/image|.*\\.png$).*)'], // Protect these routes
 };

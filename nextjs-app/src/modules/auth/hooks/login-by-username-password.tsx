@@ -1,5 +1,4 @@
 import useApiState from "@/lib/hooks/use-api-state";
-import { useCallback } from "react";
 import { LoginByTokenModel } from "../models/login-by-token.model";
 import { loginByUserNamePasswordService } from "../service/login-by-username-password.service";
 
@@ -14,12 +13,11 @@ export default function useLoginByUsernameAndPassword(username: string, password
     isLoading,
     isSuccess,
     setData,
-    setError,
     setIsSuccess,
     setIsLoading,
   } = useApiState();
 
-  const submit = useCallback(async () => {
+  const submit = async () => {
     setIsLoading(true);
     try {
       const result = await loginByUserNamePasswordService(username, password);
@@ -59,7 +57,7 @@ export default function useLoginByUsernameAndPassword(username: string, password
       setIsSuccess(true);
     }
     setIsLoading(false);
-  }, [password, setData, setIsLoading, setIsSuccess, username])
+  }
 
   return {
     data,

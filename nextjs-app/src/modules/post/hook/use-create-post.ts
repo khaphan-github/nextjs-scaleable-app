@@ -44,7 +44,7 @@ export function useCreatePost(post: PostModel): ApiUpsertHook<any> {
       setIsSuccess(true);
 
     } catch (err) {
-      setError((err as Error).message);
+      setError(err as string)
       setIsSuccess(false);
     } finally {
       setIsLoading(false);

@@ -13,6 +13,10 @@ export default function LoginForm({ redirect }: { redirect: string }) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    // Call pai ezula..
+    // Optons all api from client
+    // Optons call api from server.
+
     await loginByUserNamePasswordAction(username, password, redirect);
   }
 

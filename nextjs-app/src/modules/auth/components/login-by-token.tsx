@@ -10,6 +10,7 @@ import DefaultUILoadingHandler from "@/lib/helpers/default-ui-handler";
  * @returns 
  */
 export default function LoginToken({ token, redirect }: { token: string, redirect: string }) {
+  // use reload
   const router = useRouter();
   const {
     error,
@@ -20,7 +21,7 @@ export default function LoginToken({ token, redirect }: { token: string, redirec
 
   useEffect(() => {
     submit();
-  }, [submit]);
+  }, []);
 
   useEffect(() => {
     if (isSuccess) {
