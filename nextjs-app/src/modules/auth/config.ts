@@ -7,5 +7,5 @@ export const APIs = {
 }
 
 export const AuthConfig = {
-  loginDomain: 'auth/login'
+  loginDomain: '/auth/login'
 }
