@@ -67,7 +67,7 @@ const CreatePost = ({ redirect }: { redirect: string }) => {
       >
         {isLoading ? 'Creating...' : 'Create Post'}
       </button>
-      {error && <p className="text-red-500">{error}</p>}
+      {error && <p className="text-red-500">{typeof error === 'string' ? error : 'An error occurred'}</p>}
       {isSuccess && <p className="text-green-500">Post created successfully</p>}
     </form>
   );
