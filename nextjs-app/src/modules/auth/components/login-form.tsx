@@ -1,5 +1,5 @@
 "use client"
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm, SubmitHandler, Resolver } from 'react-hook-form';
 import { loginByUserNamePasswordAction } from '../actions/login-by-username-password.action';
 
@@ -39,31 +39,42 @@ export default function LoginForm({ redirect }: { redirect: string }) {
     }
   });
 
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    console.log(`call this function when component is mounted`);
+  })
+
+  console.log('Renderrr component')
+
   const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
     await loginByUserNamePasswordAction(data, redirect);
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <label htmlFor="username" className='bg-color-gray'>Username:</label>
-        <input
-          type="text"
-          id="username"
-          {...register('username')}
-        />
-        {errors.username && <span>{errors.username.message}</span>}
-      </div>
-      <div>
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          {...register('password')}
-        />
-        {errors.password && <span>{errors.password.message}</span>}
-      </div>
-      <button type="submit">Login</button>
-    </form>
+    <>
+      <button onClick={() => setIsMounted(!isMounted)}>Click</button>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <label htmlFor="username" className='bg-color-gray'>Username:</label>
+          <input
+            type="text"
+            id="username"
+            {...register('username')}
+          />
+          {errors.username && <span>{errors.username.message}</span>}
+        </div>
+        <div>
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            {...register('password')}
+          />
+          {errors.password && <span>{errors.password.message}</span>}
+        </div>
+        <button type="submit">Login</button>
+      </form>
+    </>
   );
 };

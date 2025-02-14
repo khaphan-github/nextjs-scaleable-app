@@ -1,4 +1,9 @@
 # NextJS Notebook
+Table of content
+- Router/Layout
+- Rendering (server component, client component)
+- Form
+- React lifecycle
 ## Main concept and practice in nextjs
 ### Routing:
 1. NextJS use file system routing: the routes in app are determined by how structure your file:
@@ -141,6 +146,22 @@ Need cofirm to use lib client
 2. useContext: access global state without prop drilling.
 3. useMemo: Cached caludated value
 4. useCallback: Cached functions
+5. useEffect" is used to handle side effects in functional components. Side effects include things like:
+  - dependencies is empty array [] if want call first render
+  - or deplendency is [changeable value] if call when this value change.
+  - no dependencies is call every component rerender
+  - clearn up functin when comonent deleted
+  ```jsx
+  export default function Home({count}){
+    useEffect(()=>{
+        console.log("Component created");
+        return () => console.log('Component deleted');
+    },[]);
+    useEffect(()=>{
+        console.log("Count changed");
+    },[count]);
+  }
+  ```
 
 # Handle form validations:
 - Use lib react-hook-form to handle validator.
