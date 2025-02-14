@@ -11,6 +11,7 @@ export const UseQueryPostComponent = () => {
   const { data, error, isLoading } = useQuery({
     queryKey: ["posts"],
     queryFn: fetchPosts,
+    staleTime: 5 * 60 * 1000,
   });
 
   if (isLoading) return;

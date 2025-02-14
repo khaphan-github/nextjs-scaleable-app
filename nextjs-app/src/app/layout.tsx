@@ -1,10 +1,7 @@
-import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Metadata } from "next";
+import AppRoot from "./root";
 import "./globals.css";
-import { CustomThemeProvider } from "@/context/theme.context";
-import { QueryClientProvider } from "@tanstack/react-query";
-import { queryClient } from "@/context/tanstack.context";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,14 +24,9 @@ export default function RootLayout(props: {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <QueryClientProvider client={queryClient}>
-
-          <CustomThemeProvider>
-            {props.children}
-          </CustomThemeProvider>
-          {/* TODO: ONly oopen in developemtn mod */}
-          <ReactQueryDevtools initialIsOpen={true} />
-        </QueryClientProvider>
+        <AppRoot>
+          {props.children}
+        </AppRoot>
       </body>
     </html >
   );
