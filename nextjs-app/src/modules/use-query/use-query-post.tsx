@@ -1,7 +1,7 @@
 "use client"
-import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useDebounce from "@/lib/hooks/use-debounce";
+import useSessionStorage from "@/lib/hooks/use-storage-state";
 
 const fetchPosts = async (searchString: string) => {
   const response = await fetch(`https://jsonplaceholder.typicode.com/posts?q=${searchString}`);
@@ -10,7 +10,7 @@ const fetchPosts = async (searchString: string) => {
 };
 
 export const UseQueryPostComponent = () => {
-  const [searchString, setSearchString] = useState("");
+  const [searchString, setSearchString] = useSessionStorage<string>('searchstring', "");
   const debouncedSearchString = useDebounce(searchString);
 
   const { data, error, isLoading, isFetching, refetch } = useQuery({
@@ -34,7 +34,7 @@ export const UseQueryPostComponent = () => {
       <button onClick={() => refetch()}>Refresh</button>
       {isFetching ? <p>Refreshing...</p> : (
         <ul>
-          {data.map((post: { id: number; title: string }) => (
+          {data?.map((post: { id: number; title: string }) => (
             <li key={post.id}>{post.title}</li>
           ))}
         </ul>

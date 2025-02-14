@@ -10,9 +10,7 @@
     "start:prod": "next build && cp -r public .next/standalone/ && cp -r .next/static .next/standalone/.next/ && HOSTNAME=127.0.0.1 PORT=3000  node .next/standalone/server.js"
   },
   "dependencies": {
-    "@tanstack/query-sync-storage-persister": "^5.66.0",
     "@tanstack/react-query": "^5.66.0",
-    "@tanstack/react-query-persist-client": "^5.66.0",
     "axios": "^1.7.9",
     "cookie": "^1.0.2",
     "next": "15.1.6",
