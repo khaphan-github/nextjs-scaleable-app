@@ -1,5 +1,5 @@
 "use client"
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 
 const createPost = async (newPost: { title: string; body: string }) => {
   const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
@@ -11,15 +11,13 @@ const createPost = async (newPost: { title: string; body: string }) => {
 };
 
 export const CreatePost = () => {
-  const queryClient = useQueryClient();
   const { mutate, } = useMutation({
     mutationFn: createPost,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["posts"] }); // refetch
     },
   });
 
-  return (  
+  return (
     <button
       onClick={() => mutate({ title: "New Post", body: "Hello World" })}
     >

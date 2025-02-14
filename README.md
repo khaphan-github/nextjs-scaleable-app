@@ -1,9 +1,22 @@
 # NextJS Notebook
 Table of content
+- React lifecycle:
+  + 
 - Router/Layout
+  + Dynamic []
+  + Group () to share layout
+  + Parallel @ to multiple page in one layout
+  + Intercepting: same same fullscreen model
+  + Middleware (check access token)
 - Rendering (server component, client component)
 - Form
-- React lifecycle
+
+- Ky thuat:
+  + Load list + filter
+  + Lazy loading
+  + Hook
+  + Multiple env
+
 ## Main concept and practice in nextjs
 ### Routing:
 1. NextJS use file system routing: the routes in app are determined by how structure your file:
