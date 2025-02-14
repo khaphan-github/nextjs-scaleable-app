@@ -13,7 +13,7 @@ export const UseQueryPostComponent = () => {
     queryFn: fetchPosts,
   });
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return;
   if (error instanceof Error) return <p>Error: {error.message}</p>;
 
   return (
