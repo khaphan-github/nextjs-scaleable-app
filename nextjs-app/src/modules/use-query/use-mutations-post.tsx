@@ -19,7 +19,7 @@ export const CreatePost = () => {
     },
   });
 
-  return (
+  return (  
     <button
       onClick={() => mutate({ title: "New Post", body: "Hello World" })}
     >
